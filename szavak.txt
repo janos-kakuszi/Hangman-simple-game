@@ -16,4 +16,5 @@ majom
 lámpa
 kettő
 kutya
-
+kosár
+fotel
