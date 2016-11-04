@@ -1,0 +1,12 @@
+Version status: 					#keymark: '+': update program 
+																		'_': remove or debug failure 
+
+v0.76: early version of the game, with a lot of bug, only for testing. (03.11.16 10:26 pm)
+
+v1.00:
++ fixed repeat/exit in core_game  (03.11.16 11:05 pm)
+- infinite loop
+
+v1.20:
++ syncing v0.76 with v1.00
+
