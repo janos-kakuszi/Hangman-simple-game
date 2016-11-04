@@ -1,5 +1,5 @@
-Version status: 					#keymark: '+': update program 
-																		'_': remove or debug failure 
+Version status: 	#keymark: '+': update program 
+				  '_': remove or debug failure 
 
 v0.76: early version of the game, with a lot of bug, only for testing. (03.11.16 10:26 pm)
 
