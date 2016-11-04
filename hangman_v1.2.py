@@ -60,6 +60,8 @@ class Hangman():
                     if replay == "y" or replay == "Y":
                         del word[:]
                         self.start_game()
+                    else:
+                        exit()
   
            elif guess not in the_word and guess not in letters_used:
                guesses += 1
