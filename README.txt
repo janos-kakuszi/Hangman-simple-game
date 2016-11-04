@@ -1,6 +1,6 @@
 # codecool_hangman
 
-Simple text based hangman game written in Python. In the main menu the player can select 'New game' and 'Exit. After the selected new game option, the player can select language with two options: 'Eng' for English, 'Hun' for Hungarian, each updated with 100 words. After the Language select, the game begin with the ultimate fascinating graphic environment. Here is an example from the program:
+Simple text based hangman game written in Python. In the main menu the player can select 'New game' and 'Exit'. After the selected new game option, the player can select language with two options: 'Eng' for English, 'Hun' for Hungarian, each updated with 100 words. After the Language select, the game begin with the ultimate fascinating graphic environment. Here is an example from the program:
 
        "________      "
        "|      |      "
