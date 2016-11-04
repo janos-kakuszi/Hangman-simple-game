@@ -11,3 +11,6 @@ Simple text based hangman game written in Python. In the main menu the player ca
 
 The player can tip 6 letters, if he can find out the word, he win otherwise died.
 
+Credtis:        
+Nikolett Uracs - programmer
+János Kakuszi - programmer
