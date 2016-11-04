@@ -52,7 +52,7 @@ class Hangman():
 
        while guesses < 6:
            guess = input("Guess a letter ->")
-           while not re.match("^[a-z]*$", guess):
+           while not re.match("^[a-z, á, é, í, ó, ö, ő, ú, ü, ű]*$", guess):
               print("Error in value")
               print("Try again!")
               guess = input("Guess a letter ->")
