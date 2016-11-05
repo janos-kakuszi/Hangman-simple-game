@@ -1,6 +1,9 @@
 Version status: 	#keymark: '+': update program 
 				  '_': remove or debug failure 					Time log:
 
+The versions can be found at the following link:
+https://github.com/janos-kakuszi/Hangman-simple-game/tree/master/Update_master.py
+
 v0.76: early version of the game, with a lot of bug, only for testing. 				(03.11.16 10:26 pm)
 
 v1.00:
