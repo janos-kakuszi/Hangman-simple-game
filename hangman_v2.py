@@ -7,10 +7,7 @@ word_list = []
 guessed = []
 counter = 0
 
-
-def core_game():
-    lang = input("What language do you want?\n"
-                 "If Hungarian, please enter: hun\nIf english, please enter: eng\nIf Python, please enter: pyt\n")
+# ----------------- Selecting Language ---------------------
     if lang == "hun" or lang == "Hun":
         the_word = (random.choice(open("for_game_hungarian.md", 'r').read().splitlines()))
         word_list.append(the_word)
@@ -30,7 +27,7 @@ def core_game():
 
 word = core_game()
 
-
+# ----------------- Tkinter window ---------------------
 root = Tk()
 root.title('Simple Hangman Game')
 v = Canvas(root, height=330, width=600)
@@ -40,14 +37,6 @@ akasztofa1 = v.create_line(30, 50, 200, 50)
 akasztofa2 = v.create_line(50, 50, 50, 250)
 akasztofa3 = v.create_line(50, 250, 200, 250)
 akasztófa4 = v.create_line(200, 50, 200, 110)
-
-
-#wrong_guess1 = v.create_oval(182, 125, 217, 90, fill='black')
-#wrong_guess2 = v.create_line(200, 125, 200, 180
-#wrong_guess3 = v.create_line(200, 140, 170, 160)
-#wrong_guess4 = v.create_line(200, 140, 230, 160)
-#wrong_guess5 = v.create_line(200, 180, 170, 220)
-#wrong_guess6 = v.create_line(200, 180, 230, 220)
 
 label = Label(root, text='.: Hangman V2.0:.', fg="red", font="Verdana 14 bold \n")
 label.place(relx=0.7, rely=0.1, anchor='n')
@@ -61,7 +50,7 @@ label3 = Label(root, textvariable=progress, fg="black", font="Verdana 24 bold \n
 label3.place(relx=0.7, rely=0.5, anchor='n')
 
 
-#------------functions-----------------------------------------------
+# ----------------- Functions ---------------------
 
 def win():
     print("""
@@ -93,9 +82,7 @@ def lose():
 '      |_|  \____/ \____/  |______\____/|_____/   |_|  (_)
 '
 '                                                         """)
-# --------- buttons ---------------------------------------------------
-
-
+# ----------------- Buttons function (A-Z) + exit - long section ---------------------
 def buttonA():
     global guessed
     global counter
@@ -795,7 +782,7 @@ def exit():
     import sys
     sys.exit()
 
-
+# ----------------- Guesses in game ---------------------
 def countered():
     if counter == 1:
         wrong_guess1 = v.create_oval(182, 125, 217, 90, fill='black')
@@ -812,7 +799,7 @@ def countered():
         lose()
         root.destroy()
 
-# --------- buttons ---------------------------------------------------
+# ----------------- Buttons as you see ---------------------
 
 buttona = Button(root, text="a", command=buttonA)
 buttona.pack(side=LEFT)
@@ -891,7 +878,7 @@ buttonEXIT.pack(side=BOTTOM)
 root.mainloop()
 
 
-
+# ----------------- New Game ---------------------
 resul = print("The word was: ", word)
 replay = input("Wanna play another?: Yes(y) or Not(press any key)")
 if replay == "y" or replay == "Y":
