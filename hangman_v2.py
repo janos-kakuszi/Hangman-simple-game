@@ -12,15 +12,15 @@ def core_game():
     lang = input("What language do you want?\n"
                  "If Hungarian, please enter: hun\nIf english, please enter: eng\nIf Python, please enter: pyt\n")
     if lang == "hun" or lang == "Hun":
-        the_word = (random.choice(open("szavak.txt", 'r').read().splitlines()))
+        the_word = (random.choice(open("for_game_hungarian.md", 'r').read().splitlines()))
         word_list.append(the_word)
         word1 = ''.join(word_list[0])
     elif lang == "eng" or lang == "Eng":
-        the_word = (random.choice(open("words.txt", 'r').read().splitlines()))
+        the_word = (random.choice(open("for_game_english.md", 'r').read().splitlines()))
         word_list.append(the_word)
         word1 = ''.join(word_list[0])
     elif lang == "pyt" or lang == "Pyt":
-        the_word = (random.choice(open("python.txt", 'r').read().splitlines()))
+        the_word = (random.choice(open("for_game_python.md", 'r').read().splitlines()))
         word_list.append(the_word)
         word1 = ''.join(word_list[0])
     else:
