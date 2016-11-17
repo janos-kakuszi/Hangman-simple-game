@@ -1,15 +1,10 @@
-# codecool_hangman
+Hangman 2.00
 
-Simple text based hangman game written in Python. In the main menu the player can select 'New game' and 'Exit'. After the selected new game option, the player can select language with two options: 'Eng' for English, 'Hun' for Hungarian, each updated with 100 words. After the Language select, the game begin with the ultimate fascinating graphic environment. Here is an example from the program:
+Improved, new version of the great Python game, Hangman simple game.
 
-       "________      "
-       "|      |      "
-       "|      0      "
-       "|     /|\     "
-       "|     / \     "
-       "|             "
-
-The player can tip 6 letters, if he can find out the word, he win otherwise died.
+New features: - ultra beautiful Tkinter GUI
+              - new language with Python phrases
+              
 
 Credtis:        
 Nikolett Uracs - programmer
