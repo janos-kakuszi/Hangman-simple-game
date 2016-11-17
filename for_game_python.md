@@ -16,7 +16,6 @@ buffererror
 crypt
 pwd
 resource
-gzip
 operator
 array
 iterator
