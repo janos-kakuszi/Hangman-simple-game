@@ -8,11 +8,9 @@ guessed = []
 counter = 0
 
 
-
 def core_game():
-    word = ""
-    lang = input("What language do you want?\n" 
-                 "If Hungarian, please enter: hun\nIf english, please enter: eng\nIf Python, please enter: pyt")
+    lang = input("What language do you want?\n"
+                 "If Hungarian, please enter: hun\nIf english, please enter: eng\nIf Python, please enter: pyt\n")
     if lang == "hun" or lang == "Hun":
         the_word = (random.choice(open("szavak.txt", 'r').read().splitlines()))
         word_list.append(the_word)
@@ -28,10 +26,10 @@ def core_game():
     else:
         print("\nInvalid input, please repeat your choice in correct form\n")
         core_game()
-    print(word1)
     return word1
 
 word = core_game()
+
 
 root = Tk()
 root.title('Simple Hangman Game')
@@ -65,8 +63,39 @@ label3.place(relx=0.7, rely=0.5, anchor='n')
 
 #------------functions-----------------------------------------------
 
+def win():
+    print("""
 
+      _____  ____  _   _  _____ _____         _______ _____ _
+'    / ____|/ __ \| \ | |/ ____|  __ \     /\|__   __/ ____| |
+'   | |  __| |  | |  \| | |  __| |__) |   /  \  | | | (___ | |
+'   | | |_ | |  | | . ` | | |_ |  _  /   / /\ \ | |  \___ \| |
+'   | |__| | |__| | |\  | |__| | | \ \  / ____ \| |  ____) |_|
+'   _\_____|\____/|_| \_|\_____|_|  \_\/_/___ \_\_|_|_____/(_)
+'   \ \   / / __ \| |  | | \ \        / / __ \| \ | | |
+'    \ \_/ / |  | | |  | |  \ \  /\  / / |  | |  \| | |
+'     \   /| |  | | |  | |   \ \/  \/ /| |  | | . ` | |
+'      | | | |__| | |__| |    \  /\  / | |__| | |\  |_|
+'      |_|  \____/ \____/      \/  \/   \____/|_| \_(_)
+'
+'
+                    """)
+
+
+def lose():
+    print("""
+
+'   __     ______  _    _   _      ____   _____ _______ _
+'   \ \   / / __ \| |  | | | |    / __ \ / ____|__   __| |
+'    \ \_/ / |  | | |  | | | |   | |  | | (___    | |  | |
+'     \   /| |  | | |  | | | |   | |  | |\___ \   | |  | |
+'      | | | |__| | |__| | | |___| |__| |____) |  | |  |_|
+'      |_|  \____/ \____/  |______\____/|_____/   |_|  (_)
+'
+'                                                         """)
 # --------- buttons ---------------------------------------------------
+
+
 def buttonA():
     global guessed
     global counter
@@ -74,15 +103,18 @@ def buttonA():
         guessed.append('a')
         for qw in range(len(word)):
             if word[qw] == 'a':
-                print(word.index('a'))
                 progress.set(progress.get()[0:qw]+'a'+progress.get()[1+qw:])
-        buttona.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttona.config(state=DISABLED)
     else:
         guessed.append('a')
-        print(guessed)
-        print("none")
         counter += 1
         buttona.config(state=DISABLED)
+        countered()
+
 
 def buttonB():
     global guessed
@@ -91,14 +123,14 @@ def buttonB():
         guessed.append('b')
         for qw in range(len(word)):
             if word[qw] == 'b':
-                print(word.index('b'))
                 progress.set(progress.get()[0:qw]+'b'+progress.get()[1+qw:])
-        buttonb.config(state=DISABLED)
-        countered()
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonb.config(state=DISABLED)
     else:
         guessed.append('b')
-        print(guessed)
-        print("none")
         counter += 1
         buttonb.config(state=DISABLED)
         countered()
@@ -111,14 +143,16 @@ def buttonC():
         guessed.append('c')
         for qw in range(len(word)):
             if word[qw] == 'c':
-                print(word.index('c'))
                 progress.set(progress.get()[0:qw]+'c'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonc.config(state=DISABLED)
         buttonc.config(state=DISABLED)
         countered()
     else:
         guessed.append('c')
-        print(guessed)
-        print("none")
         counter += 1
         buttonc.config(state=DISABLED)
         countered()
@@ -131,14 +165,13 @@ def buttonD():
         guessed.append('d')
         for qw in range(len(word)):
             if word[qw] == 'd':
-                print(word.index('d'))
-                progress.set(progress.get()[0:qw]+'d'+progress.get()[1+qw:])
-        buttond.config(state=DISABLED)
-        countered()
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttond.config(state=DISABLED)
     else:
         guessed.append('d')
-        print(guessed)
-        print("none")
         counter += 1
         buttond.config(state=DISABLED)
         countered()
@@ -150,13 +183,14 @@ def buttonE():
         guessed.append('e')
         for qw in range(len(word)):
             if word[qw] == 'e':
-                print(word.index('e'))
                 progress.set(progress.get()[0:qw]+'e'+progress.get()[1+qw:])
-        buttone.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttone.config(state=DISABLED)
     else:
         guessed.append('e')
-        print(guessed)
-        print("none")
         counter += 1
         buttone.config(state=DISABLED)
         countered()
@@ -169,13 +203,14 @@ def buttonF():
         guessed.append('f')
         for qw in range(len(word)):
             if word[qw] == 'f':
-                print(word.index('f'))
                 progress.set(progress.get()[0:qw]+'f'+progress.get()[1+qw:])
-        buttonf.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonf.config(state=DISABLED)
     else:
         guessed.append('f')
-        print(guessed)
-        print("none")
         counter += 1
         buttonf.config(state=DISABLED)
         countered()
@@ -188,13 +223,15 @@ def buttonG():
         guessed.append('g')
         for qw in range(len(word)):
             if word[qw] == 'g':
-                print(word.index('g'))
                 progress.set(progress.get()[0:qw]+'g'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttong.config(state=DISABLED)
         buttong.config(state=DISABLED)
     else:
         guessed.append('g')
-        print(guessed)
-        print("none")
         counter += 1
         buttong.config(state=DISABLED)
         countered()
@@ -209,11 +246,13 @@ def buttonH():
             if word[qw] == 'h':
                 print(word.index('h'))
                 progress.set(progress.get()[0:qw]+'h'+progress.get()[1+qw:])
-        buttonh.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonh.config(state=DISABLED)
     else:
         guessed.append('h')
-        print(guessed)
-        print("none")
         counter += 1
         buttonh.config(state=DISABLED)
         countered()
@@ -225,13 +264,14 @@ def buttonI():
         guessed.append('i')
         for qw in range(len(word)):
             if word[qw] == 'i':
-                print(word.index('i'))
                 progress.set(progress.get()[0:qw]+'i'+progress.get()[1+qw:])
-        buttoni.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttoni.config(state=DISABLED)
     else:
         guessed.append('i')
-        print(guessed)
-        print("none")
         counter += 1
         buttoni.config(state=DISABLED)
         countered()
@@ -243,13 +283,14 @@ def buttonJ():
         guessed.append('j')
         for qw in range(len(word)):
             if word[qw] == 'j':
-                print(word.index('j'))
                 progress.set(progress.get()[0:qw]+'j'+progress.get()[1+qw:])
-        buttonj.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonj.config(state=DISABLED)
     else:
         guessed.append('j')
-        print(guessed)
-        print("none")
         counter += 1
         buttonj.config(state=DISABLED)
         countered()
@@ -262,13 +303,14 @@ def buttonK():
         guessed.append('k')
         for qw in range(len(word)):
             if word[qw] == 'k':
-                print(word.index('k'))
                 progress.set(progress.get()[0:qw]+'k'+progress.get()[1+qw:])
-        buttonk.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonk.config(state=DISABLED)
     else:
         guessed.append('k')
-        print(guessed)
-        print("none")
         counter += 1
         buttonk.config(state=DISABLED)
         countered()
@@ -281,13 +323,14 @@ def buttonL():
         guessed.append('l')
         for qw in range(len(word)):
             if word[qw] == 'l':
-                print(word.index('l'))
                 progress.set(progress.get()[0:qw]+'l'+progress.get()[1+qw:])
-        buttonk.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonl.config(state=DISABLED)
     else:
         guessed.append('l')
-        print(guessed)
-        print("none")
         counter += 1
         buttonk.config(state=DISABLED)
         countered()
@@ -300,13 +343,14 @@ def buttonM():
         guessed.append('m')
         for qw in range(len(word)):
             if word[qw] == 'm':
-                print(word.index('m'))
                 progress.set(progress.get()[0:qw]+'m'+progress.get()[1+qw:])
-        buttonm.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonm.config(state=DISABLED)
     else:
         guessed.append('m')
-        print(guessed)
-        print("none")
         counter += 1
         buttonm.config(state=DISABLED)
         countered()
@@ -319,13 +363,14 @@ def buttonN():
         guessed.append('n')
         for qw in range(len(word)):
             if word[qw] == 'n':
-                print(word.index('n'))
                 progress.set(progress.get()[0:qw]+'n'+progress.get()[1+qw:])
-        buttonn.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonn.config(state=DISABLED)
     else:
         guessed.append('n')
-        print(guessed)
-        print("none")
         counter += 1
         buttonn.config(state=DISABLED)
         countered()
@@ -338,13 +383,14 @@ def buttonO():
         guessed.append('o')
         for qw in range(len(word)):
             if word[qw] == 'o':
-                print(word.index('o'))
                 progress.set(progress.get()[0:qw]+'o'+progress.get()[1+qw:])
-        buttono.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttono.config(state=DISABLED)
     else:
         guessed.append('o')
-        print(guessed)
-        print("none")
         counter += 1
         buttono.config(state=DISABLED)
         countered()
@@ -357,13 +403,14 @@ def buttonP():
         guessed.append('p')
         for qw in range(len(word)):
             if word[qw] == 'p':
-                print(word.index('p'))
                 progress.set(progress.get()[0:qw]+'p'+progress.get()[1+qw:])
-        buttonp.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonp.config(state=DISABLED)
     else:
         guessed.append('p')
-        print(guessed)
-        print("none")
         counter += 1
         buttonp.config(state=DISABLED)
         countered()
@@ -376,13 +423,14 @@ def buttonQ():
         guessed.append('q')
         for qw in range(len(word)):
             if word[qw] == 'q':
-                print(word.index('q'))
                 progress.set(progress.get()[0:qw]+'q'+progress.get()[1+qw:])
-        buttonq.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonq.config(state=DISABLED)
     else:
         guessed.append('q')
-        print(guessed)
-        print("none")
         counter += 1
         buttonq.config(state=DISABLED)
         countered()
@@ -395,14 +443,17 @@ def buttonR():
         guessed.append('r')
         for qw in range(len(word)):
             if word[qw] == 'r':
-                print(word.index('r'))
                 progress.set(progress.get()[0:qw]+'r'+progress.get()[1+qw:])
-        buttonr.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonr.config(state=DISABLED)
     else:
         guessed.append('r')
-        print(guessed)
-        print("none")
         counter += 1
+        buttonr.config(state=DISABLED)
+        countered()
 
 def buttonS():
     global guessed
@@ -411,13 +462,14 @@ def buttonS():
         guessed.append('s')
         for qw in range(len(word)):
             if word[qw] == 's':
-                print(word.index('s'))
                 progress.set(progress.get()[0:qw]+'s'+progress.get()[1+qw:])
-        buttons.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttons.config(state=DISABLED)
     else:
         guessed.append('s')
-        print(guessed)
-        print("none")
         counter += 1
         buttons.config(state=DISABLED)
         countered()
@@ -430,13 +482,14 @@ def buttonT():
         guessed.append('t')
         for qw in range(len(word)):
             if word[qw] == 't':
-                print(word.index('t'))
                 progress.set(progress.get()[0:qw]+'t'+progress.get()[1+qw:])
-        buttont.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttont.config(state=DISABLED)
     else:
         guessed.append('t')
-        print(guessed)
-        print("none")
         counter += 1
         buttont.config(state=DISABLED)
         countered()
@@ -449,13 +502,14 @@ def buttonU():
         guessed.append('u')
         for qw in range(len(word)):
             if word[qw] == 'u':
-                print(word.index('u'))
                 progress.set(progress.get()[0:qw]+'u'+progress.get()[1+qw:])
-        buttonu.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonu.config(state=DISABLED)
     else:
         guessed.append('u')
-        print(guessed)
-        print("none")
         counter += 1
         buttonu.config(state=DISABLED)
         countered()
@@ -468,13 +522,14 @@ def buttonV():
         guessed.append('v')
         for qw in range(len(word)):
             if word[qw] == 'v':
-                print(word.index('v'))
                 progress.set(progress.get()[0:qw]+'v'+progress.get()[1+qw:])
-        buttonv.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonv.config(state=DISABLED)
     else:
         guessed.append('v')
-        print(guessed)
-        print("none")
         counter += 1
         buttonv.config(state=DISABLED)
         countered()
@@ -489,11 +544,13 @@ def buttonW():
             if word[qw] == 'w':
                 print(word.index('w'))
                 progress.set(progress.get()[0:qw]+'w'+progress.get()[1+qw:])
-        buttonw.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttona.config(state=DISABLED)
     else:
         guessed.append('w')
-        print(guessed)
-        print("none")
         counter += 1
         buttonw.config(state=DISABLED)
         countered()
@@ -506,13 +563,14 @@ def buttonX():
         guessed.append('x')
         for qw in range(len(word)):
             if word[qw] == 'x':
-                print(word.index('x'))
                 progress.set(progress.get()[0:qw]+'x'+progress.get()[1+qw:])
-        buttonx.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonx.config(state=DISABLED)
     else:
         guessed.append('x')
-        print(guessed)
-        print("none")
         counter += 1
         buttonx.config(state=DISABLED)
         countered()
@@ -527,11 +585,13 @@ def buttonY():
             if word[qw] == 'y':
                 print(word.index('y'))
                 progress.set(progress.get()[0:qw]+'y'+progress.get()[1+qw:])
-        buttony.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttony.config(state=DISABLED)
     else:
         guessed.append('y')
-        print(guessed)
-        print("none")
         counter += 1
         buttony.config(state=DISABLED)
         countered()
@@ -546,33 +606,194 @@ def buttonZ():
             if word[qw] == 'z':
                 print(word.index('z'))
                 progress.set(progress.get()[0:qw]+'z'+progress.get()[1+qw:])
-        buttonz.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonz.config(state=DISABLED)
     else:
         guessed.append('z')
-        print(guessed)
-        print("none")
         counter += 1
         buttonz.config(state=DISABLED)
         countered()
 
-def buttonÁ():
+
+def buttonA1():
     global guessed
     global counter
     if 'á' in word:
         guessed.append('á')
         for qw in range(len(word)):
             if word[qw] == 'á':
-                print(word.index('á'))
                 progress.set(progress.get()[0:qw]+'á'+progress.get()[1+qw:])
-        buttoná.config(state=DISABLED)
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttoná.config(state=DISABLED)
     else:
         guessed.append('á')
-        print(guessed)
-        print("none")
         counter += 1
         buttoná.config(state=DISABLED)
         countered()
 
+
+def buttonE1():
+    global guessed
+    global counter
+    if 'é' in word:
+        guessed.append('é')
+        for qw in range(len(word)):
+            if word[qw] == 'é':
+                progress.set(progress.get()[0:qw]+'é'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttoná.config(state=DISABLED)
+    else:
+        guessed.append('é')
+        counter += 1
+        buttoné.config(state=DISABLED)
+        countered()
+
+def buttonI1():
+    global guessed
+    global counter
+    if 'í' in word:
+        guessed.append('í')
+        for qw in range(len(word)):
+            if word[qw] == 'í':
+                progress.set(progress.get()[0:qw]+'í'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttoní.config(state=DISABLED)
+    else:
+        guessed.append('í')
+        counter += 1
+        buttoní.config(state=DISABLED)
+        countered()
+
+def buttonO1():
+    global guessed
+    global counter
+    if 'ó' in word:
+        guessed.append('ó')
+        for qw in range(len(word)):
+            if word[qw] == 'ó':
+                progress.set(progress.get()[0:qw]+'ó'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttoná.config(state=DISABLED)
+    else:
+        guessed.append('ó')
+        counter += 1
+        buttonó.config(state=DISABLED)
+        countered()
+
+
+def buttonU1():
+    global guessed
+    global counter
+    if 'ú' in word:
+        guessed.append('ú')
+        for qw in range(len(word)):
+            if word[qw] == 'ú':
+                progress.set(progress.get()[0:qw]+'ú'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonú.config(state=DISABLED)
+    else:
+        guessed.append('ú')
+        counter += 1
+        buttonú.config(state=DISABLED)
+        countered()
+
+def buttonU2():
+    global guessed
+    global counter
+    if 'ü' in word:
+        guessed.append('ü')
+        for qw in range(len(word)):
+            if word[qw] == 'ü':
+                progress.set(progress.get()[0:qw]+'ü'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonü.config(state=DISABLED)
+    else:
+        guessed.append('ü')
+        counter += 1
+        buttonü.config(state=DISABLED)
+        countered()
+
+def buttonU3():
+    global guessed
+    global counter
+    if 'ű' in word:
+        guessed.append('ű')
+        for qw in range(len(word)):
+            if word[qw] == 'ű':
+                progress.set(progress.get()[0:qw]+'ű'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonű.config(state=DISABLED)
+    else:
+        guessed.append('ű')
+        counter += 1
+        buttonű.config(state=DISABLED)
+        countered()
+
+def buttonO2():
+    global guessed
+    global counter
+    if 'ö' in word:
+        guessed.append('ö')
+        for qw in range(len(word)):
+            if word[qw] == 'ö':
+                progress.set(progress.get()[0:qw]+'ö'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonö.config(state=DISABLED)
+    else:
+        guessed.append('á')
+        counter += 1
+        buttonö.config(state=DISABLED)
+        countered()
+
+def buttonO3():
+    global guessed
+    global counter
+    if 'ő' in word:
+        guessed.append('ő')
+        for qw in range(len(word)):
+            if word[qw] == 'ő':
+                progress.set(progress.get()[0:qw]+'ő'+progress.get()[1+qw:])
+                if("?" not in progress.get()):
+                    win()
+                    root.destroy()
+                if("?" in progress.get()):
+                    buttonő.config(state=DISABLED)
+    else:
+        guessed.append('ő')
+        counter += 1
+        buttonő.config(state=DISABLED)
+        countered()
+
+def exit():
+    import sys
+    sys.exit()
 
 
 def countered():
@@ -586,9 +807,9 @@ def countered():
         wrong_guess4 = v.create_line(200, 140, 230, 160)
     if counter == 5:
         wrong_guess5 = v.create_line(200, 180, 170, 220)
-        print(word)
     if counter == 6:
         wrong_guess6 = v.create_line(200, 180, 230, 220)
+        lose()
         root.destroy()
 
 # --------- buttons ---------------------------------------------------
@@ -645,29 +866,33 @@ buttony = Button(root, text="y", command=buttonY)
 buttony.pack(side=LEFT)
 buttonz = Button(root, text="z", command=buttonZ)
 buttonz.pack(side=LEFT)
-buttoná = Button(root, text="á", command=buttonÁ)
+buttoná = Button(root, text="á", command=buttonA1)
 buttoná.pack(side=LEFT)
-buttoné = Button(root, text="é")
+buttoné = Button(root, text="é", command=buttonE1)
 buttoné.pack(side=LEFT)
-buttoní = Button(root, text="í")
+buttoní = Button(root, text="í", command=buttonI1)
 buttoní.pack(side=LEFT)
-buttonó = Button(root, text="ó")
+buttonó = Button(root, text="ó", command=buttonO1)
 buttonó.pack(side=LEFT)
-buttonú = Button(root, text="ú")
+buttonú = Button(root, text="ú", command=buttonU1)
 buttonú.pack(side=LEFT)
-buttonö = Button(root, text="ö")
+buttonö = Button(root, text="ö", command=buttonO2)
 buttonö.pack(side=LEFT)
-buttonő = Button(root, text="ő")
+buttonő = Button(root, text="ő", command=buttonO3)
 buttonő.pack(side=LEFT)
-buttonü = Button(root, text="ü")
+buttonü = Button(root, text="ü", command=buttonU2)
 buttonü.pack(side=LEFT)
-buttonű = Button(root, text="ű")
+buttonű = Button(root, text="ű", command=buttonU3)
 buttonű.pack(side=LEFT)
-buttonEXIT = Button(root, text="Exit").pack(side=BOTTOM)
+buttonEXIT = Button(root, text="Exit", command=exit)
+buttonEXIT.pack(side=BOTTOM)
 
 
 root.mainloop()
 
+
+
+resul = print("The word was: ", word)
 replay = input("Wanna play another?: Yes(y) or Not(press any key)")
 if replay == "y" or replay == "Y":
     del word_list[:]
