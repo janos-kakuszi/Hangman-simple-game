@@ -33,10 +33,10 @@ root.title('Simple Hangman Game')
 v = Canvas(root, height=330, width=600)
 v.pack()
 
-akasztofa1 = v.create_line(30, 50, 200, 50)
-akasztofa2 = v.create_line(50, 50, 50, 250)
-akasztofa3 = v.create_line(50, 250, 200, 250)
-akasztófa4 = v.create_line(200, 50, 200, 110)
+akasztofa1 = v.create_line(30, 50, 200, 50, width=3)
+akasztofa2 = v.create_line(50, 50, 50, 250, width=3)
+akasztofa3 = v.create_line(50, 250, 200, 250, width=3)
+akasztófa4 = v.create_line(200, 50, 200, 110, width=3)
 
 label = Label(root, text='.: Hangman V2.0:.', fg="red", font="Verdana 14 bold \n")
 label.place(relx=0.7, rely=0.1, anchor='n')
@@ -82,6 +82,16 @@ def lose():
 '      |_|  \____/ \____/  |______\____/|_____/   |_|  (_)
 '
 '                                                         """)
+    
+def search(szo):
+    need = open("szavak.txt")
+    text = need.read().strip().split()
+
+    if szo in text:
+        return True
+    else:
+        return False
+        need.close()
 # ----------------- Buttons function (A-Z) + exit - long section ---------------------
 def buttonA():
     global guessed
@@ -619,10 +629,13 @@ def buttonA1():
                 if("?" in progress.get()):
                     buttoná.config(state=DISABLED)
     else:
-        guessed.append('á')
-        counter += 1
-        buttoná.config(state=DISABLED)
-        countered()
+        if search(word) is False:
+            buttoná.config(state=DISABLED)
+        else:
+            guessed.append('á')
+            counter += 1
+            buttoná.config(state=DISABLED)
+            countered()
 
 
 def buttonE1():
@@ -639,11 +652,15 @@ def buttonE1():
                 if("?" in progress.get()):
                     buttoná.config(state=DISABLED)
     else:
-        guessed.append('é')
-        counter += 1
-        buttoné.config(state=DISABLED)
-        countered()
-
+        if search(word) is False:
+            buttoné.config(state=DISABLED)
+        else:
+            guessed.append('é')
+            counter += 1
+            buttoné.config(state=DISABLED)
+            countered()
+            
+            
 def buttonI1():
     global guessed
     global counter
@@ -658,11 +675,15 @@ def buttonI1():
                 if("?" in progress.get()):
                     buttoní.config(state=DISABLED)
     else:
-        guessed.append('í')
-        counter += 1
-        buttoní.config(state=DISABLED)
-        countered()
+        if search(word) is False:
+            buttoní.config(state=DISABLED)
+        else:
+            guessed.append('í')
+            counter += 1
+            buttoní.config(state=DISABLED)
+            countered()
 
+            
 def buttonO1():
     global guessed
     global counter
@@ -677,10 +698,13 @@ def buttonO1():
                 if("?" in progress.get()):
                     buttoná.config(state=DISABLED)
     else:
-        guessed.append('ó')
-        counter += 1
-        buttonó.config(state=DISABLED)
-        countered()
+        if search(word) is False:
+            buttonó.config(state=DISABLED)
+        else:
+            guessed.append('ó')
+            counter += 1
+            buttonó.config(state=DISABLED)
+            countered()
 
 
 def buttonU1():
@@ -697,11 +721,15 @@ def buttonU1():
                 if("?" in progress.get()):
                     buttonú.config(state=DISABLED)
     else:
-        guessed.append('ú')
-        counter += 1
-        buttonú.config(state=DISABLED)
-        countered()
+        if search(word) is False:
+            buttonú.config(state=DISABLED)
+        else:
+            guessed.append('ú')
+            counter += 1
+            buttonú.config(state=DISABLED)
+            countered()
 
+            
 def buttonU2():
     global guessed
     global counter
@@ -716,11 +744,15 @@ def buttonU2():
                 if("?" in progress.get()):
                     buttonü.config(state=DISABLED)
     else:
-        guessed.append('ü')
-        counter += 1
-        buttonü.config(state=DISABLED)
-        countered()
-
+        if search(word) is False:
+            buttonü.config(state=DISABLED)
+        else:
+            guessed.append('ü')
+            counter += 1
+            buttonü.config(state=DISABLED)
+            countered()
+            
+            
 def buttonU3():
     global guessed
     global counter
@@ -735,11 +767,14 @@ def buttonU3():
                 if("?" in progress.get()):
                     buttonű.config(state=DISABLED)
     else:
-        guessed.append('ű')
-        counter += 1
-        buttonű.config(state=DISABLED)
-        countered()
-
+        if search(word) is False:
+            buttonü.config(state=DISABLED)
+        else:
+            guessed.append('ü')
+            counter += 1
+            buttonü.config(state=DISABLED)
+            countered()
+            
 def buttonO2():
     global guessed
     global counter
@@ -754,10 +789,13 @@ def buttonO2():
                 if("?" in progress.get()):
                     buttonö.config(state=DISABLED)
     else:
-        guessed.append('á')
-        counter += 1
-        buttonö.config(state=DISABLED)
-        countered()
+        if search(word) is False:
+            buttonö.config(state=DISABLED)
+        else:
+            guessed.append('ö')
+            counter += 1
+            buttonö.config(state=DISABLED)
+            countered()
 
 def buttonO3():
     global guessed
@@ -773,10 +811,13 @@ def buttonO3():
                 if("?" in progress.get()):
                     buttonő.config(state=DISABLED)
     else:
-        guessed.append('ő')
-        counter += 1
-        buttonő.config(state=DISABLED)
-        countered()
+        if search(word) is False:
+            buttonő.config(state=DISABLED)
+        else:
+            guessed.append('ő')
+            counter += 1
+            buttonő.config(state=DISABLED)
+            countered()
 
 def exit():
     import sys
@@ -785,17 +826,17 @@ def exit():
 # ----------------- Guesses in game ---------------------
 def countered():
     if counter == 1:
-        wrong_guess1 = v.create_oval(182, 125, 217, 90, fill='black')
+        wrong_guess1 = v.create_oval(182, 125, 217, 90, fill='black', width=3)
     if counter == 2:
-        wrong_guess2 = v.create_line(200, 125, 200, 180)
+        wrong_guess2 = v.create_line(200, 125, 200, 180, width=3)
     if counter == 3:
-        wrong_guess3 = v.create_line(200, 140, 170, 160)
+        wrong_guess3 = v.create_line(200, 140, 170, 160, width=3)
     if counter == 4:
-        wrong_guess4 = v.create_line(200, 140, 230, 160)
+        wrong_guess4 = v.create_line(200, 140, 230, 160, width=3)
     if counter == 5:
-        wrong_guess5 = v.create_line(200, 180, 170, 220)
+        wrong_guess5 = v.create_line(200, 180, 170, 220, width=3)
     if counter == 6:
-        wrong_guess6 = v.create_line(200, 180, 230, 220)
+        wrong_guess6 = v.create_line(200, 180, 230, 220, width=3)
         lose()
         root.destroy()
 
@@ -872,7 +913,7 @@ buttonü.pack(side=LEFT)
 buttonű = Button(root, text="ű", command=buttonU3)
 buttonű.pack(side=LEFT)
 buttonEXIT = Button(root, text="Exit", command=exit)
-buttonEXIT.pack(side=BOTTOM)
+buttonEXIT.pack(side=LEFT)
 
 
 root.mainloop()
