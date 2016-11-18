@@ -603,7 +603,6 @@ def buttonZ():
         guessed.append('z')
         for qw in range(len(word)):
             if word[qw] == 'z':
-                print(word.index('z'))
                 progress.set(progress.get()[0:qw]+'z'+progress.get()[1+qw:])
                 if("?" not in progress.get()):
                     win()
