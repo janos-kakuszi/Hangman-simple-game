@@ -8,6 +8,7 @@ guessed = []
 counter = 0
 
 # ----------------- Selecting Language ---------------------
+def core_game():
     if lang == "hun" or lang == "Hun":
         the_word = (random.choice(open("for_game_hungarian.md", 'r').read().splitlines()))
         word_list.append(the_word)
