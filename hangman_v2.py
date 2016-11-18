@@ -928,6 +928,6 @@ resul = print("The word was: ", word)
 replay = input("Wanna play another?: Yes(y) or Not(press any key)")
 if replay == "y" or replay == "Y":
     del word_list[:]
-    import hangman_v2
+    import hangman_v20
 else:
     exit()
