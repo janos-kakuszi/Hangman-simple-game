@@ -19,5 +19,3 @@ pohár
 papír
 tök
 könyv
-
-
