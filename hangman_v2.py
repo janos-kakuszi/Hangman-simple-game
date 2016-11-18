@@ -166,6 +166,7 @@ def buttonD():
         guessed.append('d')
         for qw in range(len(word)):
             if word[qw] == 'd':
+                progress.set(progress.get()[0:qw]+'d'+progress.get()[1+qw:])
                 if("?" not in progress.get()):
                     win()
                     root.destroy()
