@@ -9,6 +9,8 @@ counter = 0
 
 # ----------------- Selecting Language ---------------------
 def core_game():
+    lang = input("What language do you want?\n"
+                 "If Hungarian, please enter: hun\nIf english, please enter: eng\nIf Python, please enter: pyt\n")
     if lang == "hun" or lang == "Hun":
         the_word = (random.choice(open("for_game_hungarian.md", 'r').read().splitlines()))
         word_list.append(the_word)
