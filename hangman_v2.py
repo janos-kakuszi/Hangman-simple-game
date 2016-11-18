@@ -246,7 +246,6 @@ def buttonH():
         guessed.append('h')
         for qw in range(len(word)):
             if word[qw] == 'h':
-                print(word.index('h'))
                 progress.set(progress.get()[0:qw]+'h'+progress.get()[1+qw:])
                 if("?" not in progress.get()):
                     win()
@@ -544,7 +543,6 @@ def buttonW():
         guessed.append('w')
         for qw in range(len(word)):
             if word[qw] == 'w':
-                print(word.index('w'))
                 progress.set(progress.get()[0:qw]+'w'+progress.get()[1+qw:])
                 if("?" not in progress.get()):
                     win()
@@ -585,7 +583,6 @@ def buttonY():
         guessed.append('y')
         for qw in range(len(word)):
             if word[qw] == 'y':
-                print(word.index('y'))
                 progress.set(progress.get()[0:qw]+'y'+progress.get()[1+qw:])
                 if("?" not in progress.get()):
                     win()
