@@ -24,5 +24,3 @@ elif
 arg
 operator
 operand
-
-
