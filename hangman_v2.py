@@ -87,7 +87,7 @@ def lose():
 '                                                         """)
     
 def search(szo):
-    need = open("szavak.txt")
+    need = open("for_game_hungarian.md")
     text = need.read().strip().split()
 
     if szo in text:
