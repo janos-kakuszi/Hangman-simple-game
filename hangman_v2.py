@@ -771,11 +771,11 @@ def buttonU3():
                     buttonű.config(state=DISABLED)
     else:
         if search(word) is False:
-            buttonü.config(state=DISABLED)
+            buttonű.config(state=DISABLED)
         else:
-            guessed.append('ü')
+            guessed.append('ű')
             counter += 1
-            buttonü.config(state=DISABLED)
+            buttonű.config(state=DISABLED)
             countered()
             
 def buttonO2():
