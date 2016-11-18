@@ -24,8 +24,8 @@ def core_game():
         word_list.append(the_word)
         word1 = ''.join(word_list[0])
     else:
-        print("\nInvalid input, please repeat your choice in correct form\n")
-        core_game()
+        print("\nInvalid input, please repeat your choice in correct form, start the game again!\n")
+        exit()
     return word1
 
 word = core_game()
