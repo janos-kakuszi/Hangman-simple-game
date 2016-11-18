@@ -9,6 +9,7 @@ counter = 0
 
 # ----------------- Selecting Language ---------------------
 def core_game():
+    print("You can play 2 games in a row, dont forget!")
     lang = input("What language do you want?\n"
                  "If Hungarian, please enter: hun\nIf english, please enter: eng\nIf Python, please enter: pyt\n")
     if lang == "hun" or lang == "Hun":
